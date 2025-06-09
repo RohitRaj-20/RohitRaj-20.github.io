@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <div class='gradient-bg'>
+         <div class="gradients-container">
+             <div class="g1"></div>
+             <div class="g2"></div>
+             <div class="g3"></div>
+             <div class="g4"></div>
+             <div class="g5"></div>
+             <div class="g6"></div>
+             <div class="g7"></div>
+             <div class="interactive"></div>
+           </div>
+     </div>
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+        <feBlend in="SourceGraphic" in2="goo" />
+      </filter>
+    </defs>
+  </svg>
+ <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const interBubble = document.querySelector('.interactive');
+      if (!interBubble) return;
+
+      let curX = 0;
+      let curY = 0;
+      let tgX = 0;
+      let tgY = 0;
+
+      function move() {
+        curX += (tgX - curX) / 50;
+        curY += (tgY - curY) / 50;
+        interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
+        requestAnimationFrame(move);
+      }
+
+      window.addEventListener('mousemove', (event) => {
+        tgX = event.clientX;
+        tgY = event.clientY;
+      });
+
+      move();
+    });
+  </script>
+  <div class="container">
+    <header class="header">
+      <h1 class="logo">IISER KOLKATA</h1>
+      <nav class="nav">
+        <a href="#">Page 1</a>
+        <a href="#">Page 2</a>
+        <a href="#">Page 3</a>
+        <a href="#">Page 4</a>
+      </nav>
+      <button class="btn-signing">k/button>
+    </header>
+  </div>
+</body>
+
+</html>
